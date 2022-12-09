@@ -1,0 +1,89 @@
+super + Escape
+        pkill -USR1 -x sxhkd
+
+super + Return
+   	    kitty
+
+#Rofi & dmenu
+
+super + space
+   	    ~/.config/rofi/scripts/launcher_t1
+   	
+#super + d
+#	    rofi  -show window
+
+super + shift + q
+        ~/.config/rofi/scripts/powermenu_t2
+
+
+super + r
+        kitty -e "ranger"
+
+
+# Application Keybindings
+
+super + w
+    	firefox
+
+Print
+	    flameshot gui
+	
+#Audio Keybindings
+    
+#i3 Specific Keybindings
+
+super + {v,b}
+        i3-msg split {v,h}
+
+super + alt + f
+        i3-msg fullscreen toggle
+
+super + alt + space
+        i3-msg floating toggle
+
+#workspaces
+
+super + {1-9,0}
+        i3-msg workspace {1-9,10}
+
+super + shift+{1-9,0}
+        i3-msg move container to workspace number {1-9,10}
+    
+#movement
+    
+super+{Left,Down,Up,Right}
+        i3-msg focus {left,down,up,right}
+    
+super+shift+{Left,Down,Up,Right}
+    i   3-msg move {left,down,up,right}
+
+#other bindings
+
+super + q
+        i3-msg kill
+
+super + alt + c
+        i3-msg reload
+
+super + alt + r
+        i3-msg restart
+
+super + ctrl + {Left,Down,Up,Right}
+        i3-msg resize {grow width 1 px or 1 ppt, shrink height 1 px or 1 ppt, grow height 1 px or 1 ppt, shrink width 1 px or 1 ppt} 
+
+#brightness
+
+XF86MonBrightnessUp
+        xbacklight -inc 10
+		
+XF86MonBrightnessDown
+        xbacklight -dec 10
+
+
+         
+        
+        
+        
+
+ 
+    

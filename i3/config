@@ -1,0 +1,70 @@
+#  _ _____                    __ _
+# (_)___ /    ___ ___  _ __  / _(_) __ _
+# | | |_ \   / __/ _ \| '_ \| |_| |/ _` |
+# | |___) | | (_| (_) | | | |  _| | (_| |
+# |_|____/   \___\___/|_| |_|_| |_|\__, |
+#                                  |___/
+
+
+#|||||||||||||||||||||||||||  my config  |||||||||||||||||||||||||||||
+
+include $HOME/.config/i3/workspaces.conf
+#include $HOME/.config/i3/bar.conf #for bumblebbee-atatus
+
+#||||||||||||||||||||||   fonts   |||||||||||||||||||||||||||||||||||||
+
+set $mod Mod4
+font pango:JetBrainsMono Nerd Font 9
+
+# |||||||||||||||| autostart-apps |||||||||||||||||||||||||||||||||||||                       
+
+exec_always --no-startup-id flameshot
+bindsym $mod+l exec ~/.config/i3/scripts/i3-lock.sh
+
+exec --no-startup-id sh ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/i3/autostart.sh
+exec --no-startup-id picom --config ~/.config/picom/picom.conf 
+#exec --no-startup-id i3-msg 'exec /usr/bin/pulseaudio --start
+
+# Start XDG autostart .desktop files using dex
+exec --no-startup-id dex --autostart --environment i3
+
+#||||||||||||||||||| floating & title-bar & border ||||||||||||||||||||||
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+
+# Hide the title bar
+ default_border pixel 3
+ default_floating_border pixel 3
+
+# Gaps
+gaps outer 4
+gaps inner 4
+
+# Colors of winodws
+# class                 border  backgr. text    indicator child_border
+client.focused          #689d6a #689d6a #ffffff #689d6a   #689d6a
+client.focused_inactive #83a598 #83a598 #ffffff #83a598   #83a598
+client.unfocused        #83a598 #83a598 #ffffff #83a598   #83a598
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+#|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+
+
+
+
+
+
